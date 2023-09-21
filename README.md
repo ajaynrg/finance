@@ -1,3 +1,3 @@
-# Finance
+# CryptoCurrency
 
-## API used: https://www.alphavantage.co/documentation/ & API Key: DW31AD36MJ1ZH3VA
+## API used: https://docs.coincap.io/#intro & API Key: 5590126b-7430-4cf0-9e58-5b30ef5f1ed3

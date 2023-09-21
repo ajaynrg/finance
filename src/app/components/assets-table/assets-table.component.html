@@ -1,0 +1,39 @@
+<div class="col">
+  <table (change)="assetsData" class="table table-bordered table-light">
+    <thead>
+        <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price in USD</th>
+            <th scope="col">Market Cap in USD</th>
+            <th scope="col">Change (24Hr)</th>
+            <th scope="col">Volume (24Hr)</th>
+          </tr>
+    </thead>
+  
+    <tbody>
+        <tr scope="row" *ngFor="let element of assetsData?.data  | paginate: { itemsPerPage: 10, currentPage: p }">
+            <td>{{element.rank}}</td>
+            <td>{{element.symbol}}</td>
+            <td>{{element.name}}</td>
+            <td>{{element.priceUsd | currency:'USD'}}</td>
+            <td>{{element.marketCapUsd | currency:'USD'}}</td>
+            <td>
+              <div *ngIf="+element.changePercent24Hr < 0" style="color: red;font-weight: bold;">
+                  {{element.changePercent24Hr}}%
+              </div>
+              <div *ngIf="+element.changePercent24Hr > 0" style="color: green;font-weight: bold;">
+                  {{element.changePercent24Hr}}%
+              </div>
+            </td>
+            <td>{{element.volumeUsd24Hr | currency:'USD'}}</td>
+          </tr>
+    </tbody>
+  </table><br>
+</div>
+<div class="row justify-content-center">
+  <div class="col-4">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>
