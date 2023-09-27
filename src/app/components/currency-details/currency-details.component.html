@@ -1,6 +1,6 @@
 <br>
 <div class="row">
-    <div class="col-4 border">
+    <div class="col-md-4 border">
         <p>
             <span class="display-6">{{assetDetails?.name}}  </span>
             <span class="display-6">({{assetDetails?.symbol}})  - </span><br>
@@ -15,15 +15,15 @@
                     </tr>
                     <tr>
                         <td>Market cap</td>
-                        <th scope="row">{{volume_MarketCap24h | number}}%</th>
-                    </tr>
-                    <tr>
-                        <td>Market cap</td>
                         <th scope="row">{{assetDetails?.marketCapUsd | currency:'USD'}}</th>
                     </tr>
                     <tr>
-                        <td>Volume (24h)-</td>
+                        <td>Volume (24h)</td>
                         <th scope="row">{{assetDetails?.volumeUsd24Hr | currency:'USD'}}</th>
+                    </tr>
+                    <tr>
+                        <td>Volume/Market cap (24h)</td>
+                        <th scope="row">{{assetDetails?.volumeCapUsd | number}}%</th>
                     </tr>
                 </tbody>
             </table>
@@ -35,7 +35,8 @@
             </div>
         </div><br>
     </div>
-    <div class="col-8 border">
+    <br>
+    <div class="col-md-8 border">
         <app-graph [id]="id"></app-graph>
     </div>
 </div>
