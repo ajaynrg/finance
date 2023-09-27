@@ -7,16 +7,30 @@ import { Subject } from 'rxjs';
 })
 export class PriceService {
   text: Subject<any> = new Subject<any>;
-  socket = new WebSocket('wss://ws.coincap.io/prices?assets=ALL');
+  socket: any;
+  event: any;
   constructor(private http: HttpClient){}
 
-  getResult(){
-    this.socket.addEventListener("message", (event:any) => {
-      this.text.next(event.data);
+  openWebSocketForLivePrices(id: any){
+    this.socket = new WebSocket('wss://ws.coincap.io/prices?assets='+id);
+    this.event = this.socket.addEventListener("message", (event:any) => {
+      this.text.next(JSON.parse(event.data));
     });
+  }
+
+  closeWebSocketForLivePrices(){
+    this.socket.close();
   }
 
   getAssets(){
     return this.http.get('https://api.coincap.io/v2/assets');
+  }
+
+  getAssetDetails(id: any){
+    return this.http.get('https://api.coincap.io/v2/assets/'+id);
+  }
+
+  getAssetHistory(id: any){
+    return this.http.get('https://api.coincap.io/v2/assets/'+id+'/history?interval=d1');
   }
 }

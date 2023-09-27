@@ -1,0 +1,41 @@
+<br>
+<div class="row">
+    <div class="col-4 border">
+        <p>
+            <span class="display-6">{{assetDetails?.name}}  </span>
+            <span class="display-6">({{assetDetails?.symbol}})  - </span><br>
+            <span class="display-3" style="font-weight: bold;">{{(currentPrice ? currentPrice : assetDetails?.priceUsd) | currency}}</span>
+        </p>
+        <div>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Rank</td>
+                        <th scope="row">#<span>{{assetDetails?.rank}}</span></th>
+                    </tr>
+                    <tr>
+                        <td>Market cap</td>
+                        <th scope="row">{{volume_MarketCap24h | number}}%</th>
+                    </tr>
+                    <tr>
+                        <td>Market cap</td>
+                        <th scope="row">{{assetDetails?.marketCapUsd | currency:'USD'}}</th>
+                    </tr>
+                    <tr>
+                        <td>Volume (24h)-</td>
+                        <th scope="row">{{assetDetails?.volumeUsd24Hr | currency:'USD'}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div><br>
+        <div>
+            <span>Circulating Supply</span><br>
+            <div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="" aria-valuemin="0" aria-valuemax="100">
+                <div class="progress-bar" [style.width]="circulatingSupply+'%'"></div>
+            </div>
+        </div><br>
+    </div>
+    <div class="col-8 border">
+        <app-graph [id]="id"></app-graph>
+    </div>
+</div>

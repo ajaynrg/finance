@@ -4,18 +4,22 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {DialogModule} from '@angular/cdk/dialog';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
  
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AssetsTableComponent } from './components/assets-table/assets-table.component';
-import { CurrencyDetailComponent } from './components/currency-detail/currency-detail.component';
-
+import { CurrencyDetailsComponent } from './components/currency-details/currency-details.component';
+import { GraphComponent } from './components/graph/graph.component';
 @NgModule({
   declarations: [
     AppComponent,
     AssetsTableComponent,
-    CurrencyDetailComponent,
+    CurrencyDetailsComponent,
+    GraphComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,7 +27,11 @@ import { CurrencyDetailComponent } from './components/currency-detail/currency-d
     HttpClientModule,
     MatTableModule,
     MatSortModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    DialogModule,
+    MatProgressBarModule,
+    MatTooltipModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
