@@ -1,7 +1,6 @@
 import { PaginationService } from './../../services/pagination.service';
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { PriceService } from 'src/app/services/price.service';
-import {Dialog, DIALOG_DATA, DialogModule} from '@angular/cdk/dialog';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
@@ -17,16 +16,11 @@ export class AssetsTableComponent implements OnInit{
   // columnsToDisplay = ['rank', 'symbol','name','priceUsd','marketCapUsd','changePercent24Hr','volumeUsd24Hr'];
   constructor(
     private priceService: PriceService,
-    public dialog: Dialog,
-    private route: ActivatedRoute,
     private paginationService: PaginationService){
   }
 
   ngOnInit(){
     this.p = this.paginationService.p;
-    this.route.paramMap.subscribe((params: ParamMap)=>{
-      this.p = params.get('p') ? params.get('p') : this.p;
-    });
     this.priceService.getAssets().subscribe((res)=>{
       this.assetsData = res;
     });

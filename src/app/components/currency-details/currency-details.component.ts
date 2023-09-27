@@ -1,6 +1,6 @@
 import { PriceService } from './../../services/price.service';
-import { Component, Input, OnDestroy, OnInit, } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { Component, OnDestroy, OnInit, } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { PaginationService } from 'src/app/services/pagination.service';
 
 @Component({
@@ -19,7 +19,6 @@ export class CurrencyDetailsComponent implements OnInit, OnDestroy{
   constructor(
     private route: ActivatedRoute,
     private priceService: PriceService,
-    private router: Router,
     private paginationService: PaginationService
   ){}
 
